@@ -1,0 +1,10 @@
+.reveal section.technical_stack img {
+	width: 320px;
+	border: none;
+	box-shadow: 0 0 0;
+}
+
+section.alltog img {
+	width: 92%;
+	margin-top: 0;
+}
