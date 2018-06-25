@@ -31,8 +31,11 @@
 				<section>
 					<h1>Microservices</h1>
 					<h3>Story and feedback about the technical design of a new product, thanks to microservice architecture</h3>
-					<p style="text-align: left; margin-top: 70px; font-size: 70%;"><span style="color: #00AEDB; font-weight:bold;">Adeo</span> Dev Summit '18<br/>
-					<span style="font-style: italic;">Alexandre Vandekerkhove</span></p>
+					<p style="text-align: left; margin-top: 70px; font-size: 70%;">
+					<img data-src="images/devsummit_logo.png" style="display:inline-block; float: left; border: none; margin: 0 15px; width: 100px;" />
+					<span style="color: #00AEDB; font-weight:bold;">Adeo</span> Dev Summit '18<br/>
+					<span style="font-style: italic;">Alexandre Vandekerkhove</span> - Salto Consulting
+					</p>
 				</section>
 			
 				<section>
@@ -43,6 +46,12 @@
 					<hr />
 					<p style="float: left; width: 80%;"><strong>Alexandre Vandekerkhove</strong><br/>Software engineer since 2006, tech leader in the team. Backend/JEE specialist</p>
 					<img data-src="images/alex.png" style="float: right; width: 130px;  border: none;" />
+				</section>
+			
+				<section>
+					<h2>Did you say micro service?</h2>
+					<img data-src="images/micro.png" style="width: 300px; margin-right: 10px;" />
+					<img data-src="images/tennisservice.jpg" style="width: 300px; margin-left: 10px;" />
 				</section>
 			
 				<section>
@@ -62,11 +71,11 @@
 					<aside class="notes">
 						Trivial examples (shipping, inventory..) In reality, we don't often have small units as clear as that.
 					</aside>
-					<figure style="float: left; width: 50%; padding-right: 10px">
-						<img data-src="images/microservices.png" />
+					<figure style="float: left; width: 60%;"">
+						<img data-src="images/microservices.png" style="width: 100%;" />
 						<figcaption style="font-style: italic; font-size: large;">http://microservices.io</figcaption>
 					</figure>
-					<ul style="width: 40%;">
+					<ul style="width: 35%;">
 						<li>do we often face such simple use cases?</li>
 						<li>how to split a monolith?</li>
 					</ul>
@@ -77,7 +86,6 @@
 					<img data-src="images/data-cleansing.png" style="float: right; width: 35%;" />
 					<ul style="display: block;">
 						<li><strong>Clean customers data </strong> thanks to a <strong>proprietary solution</strong> to be integrated</li>
-<!-- 						<li>Integrate a <strong>proprietary solution</strong> which provides batches to <strong>clean customers data</strong></li> -->
 						<li>Create new <strong>quality measures</strong> about customers data</li>
 						<li><strong>Expose APIs</strong> to manage the batches and the quality measures</li>
 					</ul>
@@ -100,7 +108,7 @@
 					and to integrate text file to update customers data.
 					2- why it is bad : monolith grows up
 					</aside>
-					<p>Add new REST endpoints and batches on SCR</p>
+					<p>Add new REST endpoints and batches on SCR repository</p>
 					<div style="position:relative;">
 						<img data-src="images/scr_dq_naive1.png" class="fragment fade-out" data-fragment-index="0" style="position:absolute; padding: 5px; " />
 						<img data-src="images/elephant.jpg" class="fragment fade-in" data-fragment-index="0" style="width: 600px; padding: 5px;"  />
@@ -118,8 +126,8 @@
 					</blockquote>
 					<img class="fragment" data-src="images/scr_dq_1.png" style="padding: 5px; width: 700px;" />
 					<ul class="fragment">
-						<li>Bad idea &#x2639;  A lot of modifications on SCR. It should be only a <u>repository</u>.</li>
-						<li>SCR is installed in each BU with its own version...</li>
+						<li>Bad idea &#x2639;  A lot of modifications on customers repository. It should be only a... <u>repository</u>.</li>
+						<li>SCR repository is installed in each BU with own version...</li>
 					</ul>
 				</section>
 				
@@ -128,7 +136,7 @@
 					<p><em>Try to imagine a solution which answers to :</em></p>
 					<ul>
 						<li>SCR is a <strong>repository</strong> and nothing more</li>
-						<li>Possibility to link with <strong>other customers sources</strong></li>
+						<li>Possibility to connect with <strong>other customers sources</strong></li>
 						<li>Proprietary software is <strong>hidden</strong> and can be <strong>replaced</strong></li>
 						<li><strong>Multi tenant</strong> solution : 1 deployment manages multiple B.U.</li>
 						<li>Agile concepts : <strong>easy to change</strong>, <strong>easy to deploy</strong></li>
@@ -144,7 +152,7 @@
 					<img data-src="images/acl2.png" style="float: left; padding: 5px; margin-right: 10px;" />
 					<strong>The ACL handles all exchanges with SCR</strong><br/><br/>
 					&#9656; <span style="color:red;">Another customers source</span> can be used<br/>
-					&#9656; We can design an <span style="color:red;">own, simple data model</span> : the ACL is responsible of the communication</br>
+					&#9656; We can design an <span style="color:red;">own, simple data model</span> : the ACL is responsible of the transformation</br>
 					&#9656; SCR changes&rarr;<span style="color:red;">impacts limited to ACL</span>
 					</p>
 				</section>
@@ -259,7 +267,7 @@
 					</section>
 					<section>
 						<h2>Multiple deployment</h2>
-						<img data-src="images/rancher_shs.png" width="70%" />
+						<img data-src="images/rancher_shs.png" width="75%" />
 						<p>This is not really a problem but the monitoring and log analysis are more complex</p>
 					</section>
 					<section>
@@ -291,12 +299,12 @@
 					<h2>Not so cool</h2>
 					<img data-src="images/not_cool.gif" style="float: right; width: 280px;" />
 					<ul style="display: block;">
-						<li>Low productivity in the beginning</li>
-						<li>We have to deal with eventual consistency</li>
-						<li>Complex architecture for newcomers</li>
+						<li><strong>Low productivity</strong> in the beginning</li>
+						<li>We have to deal with <strong>eventual consistency</strong></li>
+						<li><strong>Complex architecture</strong> for newcomers</li>
 					</ul>
 					<ul>
-						<li>Source code tracking : a feature may cause changes in many components (which implies multiple commits, pull requests, ...)</li>
+						<li><strong>Source code tracking</strong> : a feature may cause changes in many components (which implies multiple commits, pull requests, ...)</li>
 					</ul>
 				</section>
 				
@@ -311,34 +319,39 @@
 				<section>
 					<section><h2>Some advice...</h2></section>
 					<section>
-						<p>Be <strong>pragmatic.</strong> Don't try to split each piece of code in multiple microservices.</p>
+						<p>Be <strong>pragmatic.</strong> Don't try to split each piece of code into multiple microservices.</p>
 						<figure class="fragment">
 							<img  data-src="images/ms_shit.png" style="width: 50%;" />
 							<figcaption style="font-style: italic; font-size: large;">Álvaro Sánchez</figcaption>
 						</figure>
 					</section>
-					
-					<section>
-						<aside class="notes">open-closed principle : open for extension, but closed for modification.</aside>
-						<h2></h2>
-						<ul>
-							<li>Document and <strong>Version</strong> the exchanges between services
-								<ul style="font-size: xx-large;">
-									<li>REST : ok... (URI versioning, Swagger, RAML...)</li>
-									<li>Messaging : possibility to use tools like <strong>Apache Avro</strong>, <strong>Google Protobuf</strong> or <strong>Confluence schema registry</strong></li>
-								</ul>
-							</li>
-							<li>Avoid to share code between microservices
-								<ul style="font-size: xx-large;">
-									<li>Don't apply DRY principle</li>
-								</ul>
-							</li>
-							<li>Follow <strong>Open-Closed</strong> principle</li>
-							<li>Implement lot of <strong>tests</strong> : unit/integration/end-to-end</li>
-						</ul>
-					</section>
+				
+				<section>
+					<p>I think you should <strong>document</strong> and <strong>version</strong> the exchanges between components.</p>
+					<figure>
+					<img data-src="images/versioning.png" style="width: 35%;" />
+					<figcaption style="font-style: italic; font-size: large;">http://www.pcquest.com/7-free-source-control-tools-to-save-your-precious-code/</figcaption>
+					</figure>
+					<ul style="margin-top: 15px;">
+						<li>REST : ok... (URI versioning, Swagger, RAML...)</li>
+						<li>Messaging : possibility to use tools like <strong>Apache Avro</strong>, <strong>Google Protobuf</strong> or <strong>Confluence schema registry</strong></li>
+					</ul>
 				</section>
 				
+				<section>
+					<p>Forget some old untouchable concepts...</p>
+					<ul>
+						<li>DRY ie <em>Don't repeat yourself</em></li>
+						<li>ACID</li>
+					</ul>
+					<p>... But try to integrate some new ones</p>
+					<ul>
+						<li><strong>Open-Closed</strong> philosophy</li>
+						<li>Events design</li>
+					</ul>
+				</section>
+				
+				</section>
 				
 				<section>
 					<img  data-src="images/thankyou.png" style="border: none; width: 85%; box-shadow: 0 0 0;" />
